@@ -42,11 +42,11 @@ def huffman_enc(values, left = True, code = ""):
     return enc
 
 
-def encoded_dict(input_str):
-    if type(input_str) != str:
+def encoded_dict(input):
+    if type(input) != str:
         raise ValueError("The input is not of string type")
     freq = {}
-    for i in input_str:
+    for i in input:
         if i in freq:
             freq[i] += 1
         else:
@@ -128,11 +128,9 @@ def size_saved(dictionary, msg, enc_msg):
     print("****  all characters are assumed to take 8bits of space ****")
     print("Total space before encoding : ", msg_size)
     print("Total space after encoding : ", dict_size + enc_msg_size)
-    print("space saved : ", space_saved, "(", round((space_saved/msg_size)*100,2),"%)")
+    print("space saved : ", space_saved, "(", round((space_saved/msg_size)*100,2),"%)", end = "\n\n")
     
  
-
-
 
 if __name__ == "__main__":
     input_str = str(input("enter the string to be encoded : "))
