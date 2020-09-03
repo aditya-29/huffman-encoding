@@ -14,7 +14,7 @@ with open("sample.txt", "rb") as fil:
 message = "aditya"
 
 # to create the huffman map
-enc_dict = h.encoded_dict(input = string)
+enc_dict = h.encode_dict(input = string)
 print("\nencoded dictionary : ", enc_dict, end = "\n\n")
 
 # to encode the message(custom) using the huffman map

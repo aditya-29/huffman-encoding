@@ -42,7 +42,7 @@ def huffman_enc(values, left = True, code = ""):
     return enc
 
 
-def encoded_dict(input):
+def encode_dict(input):
     if type(input) != str:
         raise ValueError("The input is not of string type")
     freq = {}
@@ -134,5 +134,5 @@ def size_saved(dictionary, msg, enc_msg):
 
 if __name__ == "__main__":
     input_str = str(input("enter the string to be encoded : "))
-    enc_dict = encoded_dict(input_str)
+    enc_dict = encode_dict(input_str)
     enc_msg = encode(input_str, enc_dict)
