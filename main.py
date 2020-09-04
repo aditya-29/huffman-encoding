@@ -10,12 +10,32 @@ if not os.path.exists(file_name):
 with open("sample.txt", "rb") as fil:
     string+=str(fil.read())
 
+
+
 # custom message to be encoded (optional)
-message = "CB.EN.U4ECE17331 MANOJ"
+message = "huffman123.234  456"
+
+
+#removing all special characters (optional)
+string = h.remove_spl_ch(string)
+message = h.remove_spl_ch(message)
+
+
 
 # to create the huffman map
-freq_of_characters, enc_dict = h.encode_dict(input = string)
-print("\nencoded dictionary : ", enc_dict, end = "\n\n")
+prob_of_characters, enc_dict = h.encode_dict(input = string)
+
+print("\nencoded dictionary  : ", end = "\n\n")
+
+for key, value in enc_dict:
+    print(key, " : ",value)
+
+print("\n\n")
+print("probability of characters : ", end = "\n\n")
+for key, value in prob_of_characters:
+    print(key, " : ",value)
+print("\n\n")
+
 
 # to encode the message(custom) using the huffman map
 enc_msg = h.encode(msg = message, dictionary = enc_dict)

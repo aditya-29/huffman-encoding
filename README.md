@@ -3,18 +3,29 @@ This repository contains code for basics of huffman encoding, decoding.
 
 
 ## functions:
+- remove_spl_ch
 - encode_dict
 - encode
 - decode
 - size_saved
 
+
+
+### remove_spl_ch:
+#### Usage : 
+import huffman as h\
+string = "message@123"\
+string = h.remove_spl_ch(string)\
+(returns "message123")
+
 ### encode_dict:
 #### Usage : 
-import huffman as h
 
-freq_of_characters, enc_dict = h.encode_dict(input = string)
+prob_of_characters, enc_dict = h.encode_dict(input = string)
 ######
-(type of enc_dict is "huffman_dict")
+prob_of_characters is the probability map
+######
+(type of prob_of_characters and enc_dict is "huffman_dict")
 
 ### encode:
 #### Usage :

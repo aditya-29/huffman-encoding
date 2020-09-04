@@ -1,4 +1,6 @@
 import sys
+from binarytree import build
+
 
 class huffman:
     def __init__(self,string):
@@ -10,7 +12,12 @@ class huffman:
 class huffman_dict:
     def __init__(self, dictionary):
         self.dictionary = dictionary
-    
+
+    def __iter__(self):
+        return iter(self.dictionary.items())
+
+    def items(self):
+        return (self.dictionary.keys(), self.dictionary.values())
     def __repr__(self):
         return "%s" % (self.dictionary)
 
@@ -53,7 +60,8 @@ def encode_dict(input):
             freq[i] = 1
 
     freq = sorted(freq.items(),key = lambda x: x[1])
-    values = freq
+    values = freq.copy()
+    # hist = []
 
     while len(values)>1:
         (v1, f1) = values.pop(0)
@@ -65,8 +73,14 @@ def encode_dict(input):
 
     enc = huffman_enc(values[0][0])
     enc = huffman_dict(enc)
+    
+    prob = {}
+    l = len(input)
+    for i in range(len(freq)):
+        prob[freq[i][0]] = int(freq[i][1]) / l
 
-    return freq, enc
+    prob = huffman_dict(prob)
+    return prob, enc
 
 def encode(msg, dictionary):
     if msg == "":
@@ -130,7 +144,15 @@ def size_saved(dictionary, msg, enc_msg):
     print("Total space after encoding : ", dict_size + enc_msg_size)
     print("space saved : ", space_saved, "(", round((space_saved/msg_size)*100,2),"%)", end = "\n\n")
     
- 
+
+def remove_spl_ch(string):
+    if string == "":
+        raise ValueError("The string is empty")
+    if type(string) != str:
+        raise TypeError("The input is not of string type")
+
+    return "".join([e for e in string if e.isalnum()])
+
 
 if __name__ == "__main__":
     input_str = str(input("enter the string to be encoded : "))
