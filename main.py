@@ -11,10 +11,10 @@ with open("sample.txt", "rb") as fil:
     string+=str(fil.read())
 
 # custom message to be encoded (optional)
-message = "aditya"
+message = "CB.EN.U4ECE17331 MANOJ"
 
 # to create the huffman map
-enc_dict = h.encode_dict(input = string)
+freq_of_characters, enc_dict = h.encode_dict(input = string)
 print("\nencoded dictionary : ", enc_dict, end = "\n\n")
 
 # to encode the message(custom) using the huffman map

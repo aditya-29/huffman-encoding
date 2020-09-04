@@ -66,7 +66,7 @@ def encode_dict(input):
     enc = huffman_enc(values[0][0])
     enc = huffman_dict(enc)
 
-    return enc
+    return freq, enc
 
 def encode(msg, dictionary):
     if msg == "":
