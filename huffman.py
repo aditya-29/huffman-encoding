@@ -1,7 +1,3 @@
-import sys
-from binarytree import build
-
-
 class huffman:
     def __init__(self,string):
         self.string = string
